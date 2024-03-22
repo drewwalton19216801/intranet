@@ -23,6 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // Collect all medications
+        $medications = auth()->user()->medications()->get();
+
+        return view('home', compact('medications'));
     }
 }
