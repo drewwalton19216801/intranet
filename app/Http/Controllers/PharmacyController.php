@@ -40,7 +40,7 @@ class PharmacyController extends Controller
         $pharmacy->name = $request->input('name');
         $pharmacy->address = $request->input('address');
         $pharmacy->phone = $request->input('phone');
-        $pharmacy->email = $request->input('city');
+        $pharmacy->city = $request->input('city');
         $pharmacy->state = $request->input('state');
         $pharmacy->zip = $request->input('zip');
         $pharmacy->user_id = auth()->user()->id;
