@@ -51,7 +51,7 @@
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save pharmacy</button>
+                <button type="submit" class="btn btn-primary">Save medication</button>
             </div>
         </div>
     </form>
