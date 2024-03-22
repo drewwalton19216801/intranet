@@ -99,7 +99,7 @@ class DatabaseSeeder extends Seeder
         // Seed the database with a single user
         $user = User::factory()->create([
             'name' => 'Drew Walton',
-            'email' => 'drewwalton19216801@gmail.com',
+            'email' => 'admin@medtracker',
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
         ]);
