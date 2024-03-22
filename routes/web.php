@@ -30,7 +30,7 @@ Route::controller(MedicationsController::class)->group(function () {
 
 Route::controller(PharmacyController::class)->group(function () {
     Route::get('/dashboard/pharmacies', 'index')->name('pharmacies.index');
-    Route::get('/dashboard/pharmacies/create', 'createPharmacy')->name('pharmacies.create');
+    Route::get('/dashboard/pharmacies/create', 'create')->name('pharmacies.create');
     Route::post('/dashboard/pharmacies/save', 'savePharmacy')->name('pharmacies.save');
     Route::post('/dashboard/pharmacies/update/{id}', 'update')->name('pharmacies.update');
     Route::get('/dashboard/pharmacies/{id}', 'pharmacy')->name('pharmacies.show');
@@ -40,8 +40,8 @@ Route::controller(PharmacyController::class)->group(function () {
 
 Route::controller(PrescriberController::class)->group(function () {
     Route::get('/dashboard/prescribers', 'index')->name('prescribers.index');
-    Route::get('/dashboard/prescribers/create', 'createPrescriber')->name('prescribers.create');
-    Route::post('/dashboard/prescribers/save', 'savePrescriber')->name('prescribers.save');
+    Route::get('/dashboard/prescribers/create', 'create')->name('prescribers.create');
+    Route::post('/dashboard/prescribers/store', 'store')->name('prescribers.store');
     Route::post('/dashboard/prescribers/update/{id}', 'update')->name('prescribers.update');
     Route::get('/dashboard/prescribers/{id}', 'prescriber')->name('prescribers.show');
     Route::get('/dashboard/prescribers/{id}/edit', 'editPrescriber')->name('prescribers.edit');

@@ -74,4 +74,15 @@ class PharmacyController extends Controller
 
         return redirect('/dashboard/pharmacies');
     }
+
+    public function destroy(Request $request)
+    {
+        $pharmacy = Pharmacy::find($request->input('pharmacy_id'));
+        $pharmacy->delete();
+
+        // Set session message
+        $request->session()->flash('status', 'Pharmacy deleted successfully');
+
+        return redirect('/dashboard/pharmacies');
+    }
 }

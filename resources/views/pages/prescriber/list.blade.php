@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                @include('components.prescriber-list')
+                @include('components.prescriber.list')
             </div>
         </div>
     </div>
