@@ -73,6 +73,8 @@ class MedicationsController extends Controller
         $this->validate($request, [
             'name' => 'required|max:255',
             'description' => 'required',
+            'dosage' => 'required',
+            'frequency' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date'
         ]);
@@ -87,6 +89,9 @@ class MedicationsController extends Controller
         $medication->end_date = $request->end_date;
 
         $medication->save();
+
+        // Set session status message
+        $request->session()->flash('status', 'Medication updated successfully');
 
         return redirect('/dashboard/medications');
     }

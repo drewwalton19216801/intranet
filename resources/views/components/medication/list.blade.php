@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 @foreach ($medications as $medication)
-                    @include('components.medication-item', ['medication' => $medication])
+                    @include('components.medication.item', ['medication' => $medication])
                 @endforeach
             </tbody>
         </table>
@@ -27,5 +27,5 @@
 </div>
 
 @foreach ($medications as $medication)
-    @include('components.medication-modal', ['medication' => $medication])
+    @include('components.medication.modal', ['medication' => $medication])
 @endforeach

@@ -16,7 +16,7 @@
                     </div>
                 @endif
 
-                @include('components.medication-list')
+                @include('components.medication.list')
             </div>
         </div>
     </div>

@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         @foreach ($medications as $medication)
-            @include('components.medication-item-pdf', ['medication' => $medication])
+            @include('components.medication.item-pdf', ['medication' => $medication])
         @endforeach
     </tbody>
 </table>

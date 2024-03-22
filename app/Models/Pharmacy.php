@@ -9,5 +9,5 @@ class Pharmacy extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'phone', 'city', 'state', 'zip'];
+    protected $fillable = ['name', 'address', 'phone', 'city', 'state', 'zip', 'user_id'];
 }

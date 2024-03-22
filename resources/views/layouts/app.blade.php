@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,6 +13,7 @@
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
+
 <body data-bs-theme="dark">
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
@@ -19,7 +21,9 @@
                 <a class="navbar-brand" href="{{ url('/dashboard') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
@@ -46,13 +50,14 @@
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
+                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
@@ -68,29 +73,35 @@
             </div>
         </nav>
 
-        <!-- Secondary navbar -->
-        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-            <div class="container">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <!-- Link to medications list, only active if route is medications -->
-                        <a class="nav-link {{ request()->routeIs('medications.*') ? 'active' : '' }}" href="{{ route('medications.index') }}">Medications</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Link to pharmacies list, only active if route is pharmacies -->
-                        <a class="nav-link {{ request()->routeIs('pharmacies.*') ? 'active' : '' }}" href="{{ route('pharmacies.index') }}">Pharmacies</a>
-                    </li>
-                    <li class="nav-item">
-                        <!-- Link to prescribers list, only active if route is prescribers -->
-                        <a class="nav-link {{ request()->routeIs('prescribers.*') ? 'active' : '' }}" href="{{ route('prescribers.index') }}">Prescribers</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        @auth
+            <!-- Secondary navbar -->
+            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+                <div class="container">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item">
+                            <!-- Link to medications list, only active if route is medications -->
+                            <a class="nav-link {{ request()->routeIs('medications.*') ? 'active' : '' }}"
+                                href="{{ route('medications.index') }}">Medications</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link to pharmacies list, only active if route is pharmacies -->
+                            <a class="nav-link {{ request()->routeIs('pharmacies.*') ? 'active' : '' }}"
+                                href="{{ route('pharmacies.index') }}">Pharmacies</a>
+                        </li>
+                        <li class="nav-item">
+                            <!-- Link to prescribers list, only active if route is prescribers -->
+                            <a class="nav-link {{ request()->routeIs('prescribers.*') ? 'active' : '' }}"
+                                href="{{ route('prescribers.index') }}">Prescribers</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        @endauth
 
         <main class="py-4">
             @yield('content')
         </main>
     </div>
 </body>
+
 </html>

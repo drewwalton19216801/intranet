@@ -29,7 +29,7 @@ Route::controller(MedicationsController::class)->group(function () {
 });
 
 Route::controller(PharmacyController::class)->group(function () {
-    Route::get('/dashboard/pharmacies;', 'index')->name('pharmacies.index');
+    Route::get('/dashboard/pharmacies', 'index')->name('pharmacies.index');
     Route::get('/dashboard/pharmacies/create', 'createPharmacy')->name('pharmacies.create');
     Route::post('/dashboard/pharmacies/save', 'savePharmacy')->name('pharmacies.save');
     Route::post('/dashboard/pharmacies/update/{id}', 'update')->name('pharmacies.update');

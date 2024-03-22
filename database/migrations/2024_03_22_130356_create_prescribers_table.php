@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('city');
             $table->string('state');
             $table->string('zip');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             // Soft delete
             $table->softDeletes();
             $table->timestamps();

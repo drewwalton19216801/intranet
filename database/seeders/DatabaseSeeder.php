@@ -118,6 +118,8 @@ class DatabaseSeeder extends Seeder
             'phone' => '555-555-5555',
             'city' => 'Anytown',
             'state' => 'CA',
+            'zip' => '12345',
+            'user_id' => $user->id,
         ]);
 
         $prescriber = Prescriber::factory()->create([
@@ -126,6 +128,8 @@ class DatabaseSeeder extends Seeder
             'phone' => '555-555-5555',
             'city' => 'Anytown',
             'state' => 'CA',
+            'zip' => '12345',
+            'user_id' => $user->id,
         ]);
 
         // Add some medications to the database
