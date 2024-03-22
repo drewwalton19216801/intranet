@@ -34,7 +34,22 @@
                         <label for="end_date">End Date</label>
                         <input type="date" class="form-control" id="end_date" name="end_date" value="{{ $medication->end_date }}" required>
                     </div>
-                    <!-- TODO: Add Prescriber and Pharmacy fields -->
+                    <div class="form-group">
+                        <label for="prescriber_id">Prescriber</label>
+                        <select class="form-control" id="prescriber_id" name="prescriber_id" required>
+                            @foreach ($prescribers as $prescriber)
+                                <option value="{{ $prescriber->id }}" {{ $prescriber->id == $medication->prescriber_id ? 'selected' : '' }}>{{ $prescriber->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="pharmacy_id">Pharmacy</label>
+                        <select class="form-control" id="pharmacy_id" name="pharmacy_id" required>
+                            @foreach ($pharmacies as $pharmacy)
+                                <option value="{{ $pharmacy->id }}" {{ $pharmacy->id == $medication->pharmacy_id ? 'selected' : '' }}>{{ $pharmacy->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>

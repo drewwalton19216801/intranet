@@ -19,13 +19,13 @@ Route::controller(DashboardController::class)->group(function () {
 
 Route::controller(MedicationsController::class)->group(function () {
     Route::get('/dashboard/medications', 'index')->name('medications.index');
-    Route::get('/dashboard/medications/create', 'createMedication')->name('medications.create');
-    Route::post('/dashboard/medications/save', 'saveMedication')->name('medications.save');
+    Route::get('/dashboard/medications/create', 'create')->name('medications.create');
+    Route::post('/dashboard/medications/save', 'store')->name('medications.store');
     Route::post('/dashboard/medications/update/{id}', 'update')->name('medications.update');
-    Route::get('/dashboard/medications/saveaspdf', 'saveMedicationList')->name('medications.pdf');
+    Route::get('/dashboard/medications/saveaspdf', 'savePdf')->name('medications.pdf');
     Route::get('/dashboard/medications/{id}', 'medication')->name('medications.show');
     Route::get('/dashboard/medications/{id}/edit', 'editMedication')->name('medications.edit');
-    Route::post('/dashboard/medications/{id}/delete', 'deleteMedication')->name('medications.delete');
+    Route::get('/dashboard/medications/{id}/delete', 'destroy')->name('medications.destroy');
 });
 
 Route::controller(PharmacyController::class)->group(function () {

@@ -30,12 +30,14 @@ class MedicationsController extends Controller
     {
         // Get the medications for the current user
         $data = array(
-            'medications' => auth()->user()->medications
+            'medications' => auth()->user()->medications,
+            'prescribers' => auth()->user()->prescribers,
+            'pharmacies' => auth()->user()->pharmacies
         );
         return view('pages.medication.list', $data);
     }
 
-    public function saveMedicationList()
+    public function savePdf()
     {
         // Get the medications for the current user if they are not expired (e.g. today is not past end_date)
         $medications = auth()->user()->medications()->whereDate('end_date', '>=', date('Y-m-d'))->get();
@@ -55,17 +57,42 @@ class MedicationsController extends Controller
 
     public function create(Request $request)
     {
-        return view('pages.medication.create');
+        $data = array(
+            'pharmacies' => auth()->user()->pharmacies,
+            'prescribers' => auth()->user()->prescribers
+        );
+        return view('pages.medication.create', $data);
     }
 
-    public function saveNew(Request $request)
+    public function store(Request $request)
     {
         $this->validate($request, [
             'name' => 'required|max:255',
             'description' => 'required',
+            'dosage' => 'required',
+            'frequency' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date'
         ]);
+
+        $medication = new Medication();
+        $medication->name = $request->name;
+        $medication->description = $request->description;
+        $medication->dosage = $request->dosage;
+        $medication->frequency = $request->frequency;
+        $medication->start_date = $request->start_date;
+        $medication->end_date = $request->end_date;
+
+        $medication->user_id = auth()->user()->id;
+        $medication->prescriber_id = $request->prescriber_id;
+        $medication->pharmacy_id = $request->pharmacy_id;
+
+        $medication->save();
+
+        // Set session status message
+        $request->session()->flash('status', 'Medication created successfully');
+
+        return redirect('/dashboard/medications');
     }
 
     public function update(Request $request)
@@ -88,10 +115,24 @@ class MedicationsController extends Controller
         $medication->start_date = $request->start_date;
         $medication->end_date = $request->end_date;
 
+        $medication->prescriber_id = $request->prescriber_id;
+        $medication->pharmacy_id = $request->pharmacy_id;
+
         $medication->save();
 
         // Set session status message
         $request->session()->flash('status', 'Medication updated successfully');
+
+        return redirect('/dashboard/medications');
+    }
+
+    public function destroy(Request $request, $medication_id)
+    {
+        $medication = Medication::find($medication_id);
+        $medication->delete();
+
+        // Set session status message
+        $request->session()->flash('status', 'Medication deleted successfully');
 
         return redirect('/dashboard/medications');
     }
