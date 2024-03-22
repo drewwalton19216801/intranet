@@ -27,10 +27,17 @@
                                 <h5 class="card-title">{{ $medication->description }}</h5>
                                 <p class="card-text">Dosage: {{ $medication->dosage }}</p>
                                 <p class="card-text">Frequency: {{ $medication->frequency }}</p>
-                                <p class="card-text">Start Date: {{ $medication->start_date }}</p>
-                                <p class="card-text">End Date: {{ $medication->end_date }}</p>
-                                <p class="card-text">Pharmacy: {{ $medication->pharmacy->name }}</p>
-                                <p class="card-text">Prescribed By: {{ $medication->prescriber->name }}</p>
+                                <!-- Dropdown for the rest of the information -->
+                                <div class="dropdown">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        More Information
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a class="dropdown-item" href="{{ route('medication.edit', $medication->id) }}">Edit</a>
+                                        <a class="dropdown-item" href="{{ route('medication.delete', $medication->id) }}">Delete</a>
+                                    </ul>
+                                </div>
+                                <!-- End of dropdown -->
                             </div>
                         </div>
                     @endforeach
