@@ -8,6 +8,7 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Dosage</th>
+                    <th>Expiration Date</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -20,6 +21,12 @@
     </div>
     <div class="d-flex justify-content-left">
         <!-- New Medication Button -->
-        <a class="btn btn-primary" href="{{ route('medication.create') }}">New Medication</a>
+        <a class="btn btn-primary" href="{{ route('medications.create') }}">New Medication</a>
+        <!-- Save to PDF -->
+        <a class="btn btn-primary mx-2" href="{{ route('medications.pdf') }}">Save List to PDF</a>
     </div>
 </div>
+
+@foreach ($medications as $medication)
+    @include('components.medication-modal', ['medication' => $medication])
+@endforeach

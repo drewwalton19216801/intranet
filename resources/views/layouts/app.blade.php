@@ -72,6 +72,18 @@
             </div>
         </nav>
 
+        <!-- Secondary navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            <div class="container">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <!-- Link to medications list, only active if route is medications -->
+                        <a class="nav-link {{ request()->routeIs('medications.*') ? 'active' : '' }}" href="{{ route('medications.index') }}">Medications</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
         <main class="py-4">
             @yield('content')
         </main>

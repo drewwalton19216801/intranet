@@ -54,15 +54,6 @@ class DashboardController extends Controller
         return view('pages.pharmacy.show', $data);
     }
 
-    public function medications()
-    {
-        // Get the medications for the current user
-        $data = array(
-            'medications' => auth()->user()->medications
-        );
-        return view('pages.medication.list', $data);
-    }
-
     public function reminders()
     {
         return view('pages.reminder.list');
