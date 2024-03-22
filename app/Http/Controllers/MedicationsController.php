@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Models\Prescriber;
+use App\Models\Pharmacy;
+use App\Models\Medication;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class MedicationsController extends Controller
@@ -49,5 +51,43 @@ class MedicationsController extends Controller
         $filename = 'medications-' . auth()->user()->name . '-' . date('Y-m-d') . '_' . time() . '.pdf';
 
         return $pdf->download($filename);
+    }
+
+    public function create(Request $request)
+    {
+        return view('pages.medication.create');
+    }
+
+    public function saveNew(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
+        ]);
+    }
+
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date'
+        ]);
+
+        $medication = Medication::find($request->medication_id);
+
+        $medication->name = $request->name;
+        $medication->description = $request->description;
+        $medication->dosage = $request->dosage;
+        $medication->frequency = $request->frequency;
+        $medication->start_date = $request->start_date;
+        $medication->end_date = $request->end_date;
+
+        $medication->save();
+
+        return redirect('/dashboard/medications');
     }
 }

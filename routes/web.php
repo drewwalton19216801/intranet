@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MedicationsController;
+use App\Http\Controllers\PharmacyController;
+use App\Http\Controllers\PrescriberController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -12,26 +14,36 @@ Auth::routes();
 
 Route::controller(DashboardController::class)->group(function () {
     Route::get('/dashboard', 'index')->name('dashboard');
-    Route::get('/dashboard/pharmacies', 'pharmacies')->name('pharmacies');
-    Route::get('/dashboard/prescribers', 'prescribers')->name('prescribers');
     Route::get('/dashboard/reminders', 'reminders')->name('reminders');
-
-    Route::get('/dashboard/prescribers/{prescriber_id}', 'showPrescriber')->name('prescribers.show');
-    Route::get('/dashboard/prescribers/{prescriber_id}/edit', 'editPrescriber')->name('prescriber.edit');
-    Route::post('/dashboard/prescribers/{prescriber_id}/delete', 'deletePrescriber')->name('prescriber.delete');
-
-    Route::get('/dashboard/pharmacies/{pharmacy_id}', 'showPharmacy')->name('pharmacies.show');
-    Route::get('/dashboard/pharmacies/{pharmacy_id}/edit', 'editPharmacy')->name('pharmacy.edit');
-    Route::post('/dashboard/pharmacies/{pharmacy_id}/delete', 'deletePharmacy')->name('pharmacy.delete');
 });
 
 Route::controller(MedicationsController::class)->group(function () {
     Route::get('/dashboard/medications', 'index')->name('medications.index');
     Route::get('/dashboard/medications/create', 'createMedication')->name('medications.create');
     Route::post('/dashboard/medications/save', 'saveMedication')->name('medications.save');
-    Route::post('/dashboard/medications/update', 'updateMedication')->name('medications.update');
+    Route::post('/dashboard/medications/update/{id}', 'update')->name('medications.update');
     Route::get('/dashboard/medications/saveaspdf', 'saveMedicationList')->name('medications.pdf');
     Route::get('/dashboard/medications/{id}', 'medication')->name('medications.show');
     Route::get('/dashboard/medications/{id}/edit', 'editMedication')->name('medications.edit');
     Route::post('/dashboard/medications/{id}/delete', 'deleteMedication')->name('medications.delete');
+});
+
+Route::controller(PharmacyController::class)->group(function () {
+    Route::get('/dashboard/pharmacies;', 'index')->name('pharmacies.index');
+    Route::get('/dashboard/pharmacies/create', 'createPharmacy')->name('pharmacies.create');
+    Route::post('/dashboard/pharmacies/save', 'savePharmacy')->name('pharmacies.save');
+    Route::post('/dashboard/pharmacies/update/{id}', 'update')->name('pharmacies.update');
+    Route::get('/dashboard/pharmacies/{id}', 'pharmacy')->name('pharmacies.show');
+    Route::get('/dashboard/pharmacies/{id}/edit', 'editPharmacy')->name('pharmacies.edit');
+    Route::post('/dashboard/pharmacies/{id}/delete', 'deletePharmacy')->name('pharmacies.delete');
+});
+
+Route::controller(PrescriberController::class)->group(function () {
+    Route::get('/dashboard/prescribers', 'index')->name('prescribers.index');
+    Route::get('/dashboard/prescribers/create', 'createPrescriber')->name('prescribers.create');
+    Route::post('/dashboard/prescribers/save', 'savePrescriber')->name('prescribers.save');
+    Route::post('/dashboard/prescribers/update/{id}', 'update')->name('prescribers.update');
+    Route::get('/dashboard/prescribers/{id}', 'prescriber')->name('prescribers.show');
+    Route::get('/dashboard/prescribers/{id}/edit', 'editPrescriber')->name('prescribers.edit');
+    Route::post('/dashboard/prescribers/{id}/delete', 'deletePrescriber')->name('prescribers.delete');
 });

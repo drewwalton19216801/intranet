@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Models\Prescriber;
 
-class PharmacyController extends Controller
+class PrescriberController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -21,8 +21,8 @@ class PharmacyController extends Controller
     public function index()
     {
         $data = array(
-            'pharmacies' => auth()->user()->pharmacies
+            'prescribers' => auth()->user()->prescribers
         );
-        return view('pages.pharmacy.list', $data);
+        return view('pages.prescriber.list', $data);
     }
 }

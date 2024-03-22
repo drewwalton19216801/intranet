@@ -9,10 +9,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
-
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
@@ -20,7 +16,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/dashboard') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -79,6 +75,14 @@
                     <li class="nav-item">
                         <!-- Link to medications list, only active if route is medications -->
                         <a class="nav-link {{ request()->routeIs('medications.*') ? 'active' : '' }}" href="{{ route('medications.index') }}">Medications</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to pharmacies list, only active if route is pharmacies -->
+                        <a class="nav-link {{ request()->routeIs('pharmacies.*') ? 'active' : '' }}" href="{{ route('pharmacies.index') }}">Pharmacies</a>
+                    </li>
+                    <li class="nav-item">
+                        <!-- Link to prescribers list, only active if route is prescribers -->
+                        <a class="nav-link {{ request()->routeIs('prescribers.*') ? 'active' : '' }}" href="{{ route('prescribers.index') }}">Prescribers</a>
                     </li>
                 </ul>
             </div>

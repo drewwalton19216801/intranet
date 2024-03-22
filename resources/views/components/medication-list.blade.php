@@ -9,7 +9,6 @@
                     <th>Description</th>
                     <th>Dosage</th>
                     <th>Expiration Date</th>
-                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>

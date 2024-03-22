@@ -4,7 +4,4 @@
     <td>{{ $medication->description }}</td>
     <td>{{ $medication->dosage }}</td>
     <td>{{ $medication->end_date }}</td>
-    <td>
-        @include('components.medication-actions', ['medication' => $medication])
-    </td>
 </tr>

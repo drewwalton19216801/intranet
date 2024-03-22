@@ -9,7 +9,7 @@
             <div class="modal-body">
                 <form method="POST" action="{{ route('medications.update', $medication) }}">
                     @csrf
-                    @method('PUT')
+                    <input type="hidden" name="medication_id" id="medication_id" value="{{ $medication->id }}">
                     <div class="form-group">
                         <label for="name">Name</label>
                         <input type="text" class="form-control" id="name" name="name" value="{{ $medication->name }}" required>
