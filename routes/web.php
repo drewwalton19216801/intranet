@@ -31,11 +31,11 @@ Route::controller(MedicationsController::class)->group(function () {
 Route::controller(PharmacyController::class)->group(function () {
     Route::get('/dashboard/pharmacies', 'index')->name('pharmacies.index');
     Route::get('/dashboard/pharmacies/create', 'create')->name('pharmacies.create');
-    Route::post('/dashboard/pharmacies/save', 'savePharmacy')->name('pharmacies.save');
+    Route::post('/dashboard/pharmacies/store', 'store')->name('pharmacies.store');
     Route::post('/dashboard/pharmacies/update/{id}', 'update')->name('pharmacies.update');
     Route::get('/dashboard/pharmacies/{id}', 'pharmacy')->name('pharmacies.show');
     Route::get('/dashboard/pharmacies/{id}/edit', 'editPharmacy')->name('pharmacies.edit');
-    Route::post('/dashboard/pharmacies/{id}/delete', 'deletePharmacy')->name('pharmacies.delete');
+    Route::get('/dashboard/pharmacies/{id}/destroy', 'destroy')->name('pharmacies.destroy');
 });
 
 Route::controller(PrescriberController::class)->group(function () {
@@ -45,5 +45,5 @@ Route::controller(PrescriberController::class)->group(function () {
     Route::post('/dashboard/prescribers/update/{id}', 'update')->name('prescribers.update');
     Route::get('/dashboard/prescribers/{id}', 'prescriber')->name('prescribers.show');
     Route::get('/dashboard/prescribers/{id}/edit', 'editPrescriber')->name('prescribers.edit');
-    Route::post('/dashboard/prescribers/{id}/delete', 'deletePrescriber')->name('prescribers.delete');
+    Route::get('/dashboard/prescribers/{id}/destroy', 'destroy')->name('prescribers.destroy');
 });

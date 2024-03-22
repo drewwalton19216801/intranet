@@ -45,6 +45,11 @@ class PharmacyController extends Controller
         $pharmacy->zip = $request->input('zip');
         $pharmacy->user_id = auth()->user()->id;
         $pharmacy->save();
+
+        // Set session message
+        $request->session()->flash('status', 'Pharmacy created successfully');
+
+        return redirect('/dashboard/pharmacies');
     }
 
     public function update(Request $request)
@@ -75,9 +80,20 @@ class PharmacyController extends Controller
         return redirect('/dashboard/pharmacies');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, $pharmacy_id)
     {
-        $pharmacy = Pharmacy::find($request->input('pharmacy_id'));
+        $pharmacy = Pharmacy::find($pharmacy_id);
+
+        // Check if there are any medications associated with the pharmacy
+        $medications = Medication::where('pharmacy_id', $pharmacy_id)->get();
+
+        // If there are medications associated with the pharmacy, we cannot delete the pharmacy
+        if (count($medications) > 0) {
+            $request->session()->flash('error', 'Pharmacy cannot be deleted because there are medications associated with it');
+            return redirect('/dashboard/pharmacies');
+        }
+
+        // Carry out deletion
         $pharmacy->delete();
 
         // Set session message

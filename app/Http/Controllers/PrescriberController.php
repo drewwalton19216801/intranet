@@ -80,9 +80,19 @@ class PrescriberController extends Controller
         return redirect('/dashboard/prescribers');
     }
 
-    public function destroy(Request $request)
+    public function destroy(Request $request, $prescriber_id)
     {
-        $prescriber = Prescriber::find($request->input('prescriber_id'));
+        $prescriber = Prescriber::find($prescriber_id);
+
+        // Check if there are any medications associated with the prescriber
+        $medications = Medication::where('prescriber_id', $prescriber_id)->get();
+
+        // If there are medications associated with the pharmacy, we cannot delete the pharmacy
+        if (count($medications) > 0) {
+            $request->session()->flash('error', 'Prescriber cannot be deleted because there are medications associated with it');
+            return redirect('/dashboard/prescribers');
+        }
+
         $prescriber->delete();
 
         // Set session message

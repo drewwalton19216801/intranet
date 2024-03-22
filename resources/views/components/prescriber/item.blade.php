@@ -6,4 +6,5 @@
     <td>{{ $prescriber->city }}</td>
     <td>{{ $prescriber->state }}</td>
     <td>{{ $prescriber->zip }}</td>
+    <td><a href="{{ route('prescribers.destroy', $prescriber) }}">Delete</a></td>
 </tr>

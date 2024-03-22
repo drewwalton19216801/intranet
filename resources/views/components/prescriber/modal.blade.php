@@ -34,7 +34,6 @@
                         <label for="zip">Zip Code</label>
                         <input type="text" class="form-control" id="zip" name="zip" value="{{ $prescriber->zip }}" required>
                     </div>
-                    <!-- TODO: Add Prescriber and prescriber fields -->
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <button type="submit" class="btn btn-primary">Save changes</button>

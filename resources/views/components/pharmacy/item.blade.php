@@ -6,4 +6,5 @@
     <td>{{ $pharmacy->city }}</td>
     <td>{{ $pharmacy->state }}</td>
     <td>{{ $pharmacy->zip }}</td>
+    <td><a href="{{ route('pharmacies.destroy', $pharmacy) }}">Delete</a></td>
 </tr>

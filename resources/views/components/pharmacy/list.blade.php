@@ -12,6 +12,7 @@
                     <th>City</th>
                     <th>State</th>
                     <th>Zip</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
