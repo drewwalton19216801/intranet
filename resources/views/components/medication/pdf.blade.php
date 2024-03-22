@@ -15,8 +15,6 @@
             <th style="text-align: left">Description</th>
             <th style="text-align: left">Dosage</th>
             <th style="text-align: left">Frequency</th>
-            <th style="text-align: left">Start Date</th>
-            <th style="text-align: left">End Date</th>
             <th style="text-align: left">Prescriber</th>
             <th style="text-align: left">Pharmacy</th>
         </tr>

@@ -8,7 +8,6 @@
                     <th>Name</th>
                     <th>Description</th>
                     <th>Dosage</th>
-                    <th>Expiration Date</th>
                     <th>Delete</th>
                 </tr>
             </thead>
