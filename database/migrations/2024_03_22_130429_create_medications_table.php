@@ -17,19 +17,11 @@ return new class extends Migration
             $table->string('description');
             $table->string('dosage');
             $table->string('frequency');
-            $table->foreignId('prescriber_id')->constrained('prescribers')->onDelete('cascade');
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('user_medications', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('medication_id')->constrained('medications')->onDelete('cascade');
-            $table->foreignId('prescriber_id')->constrained('prescribers')->onDelete('cascade');
-            $table->foreignId('pharmacy_id')->constrained('pharmacies')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
+            $table->foreignId('prescriber_id')->constrained('prescribers');
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('pharmacy_id')->constrained('pharmacies');
             $table->softDeletes();
             $table->timestamps();
         });
@@ -41,6 +33,5 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('medications');
-        Schema::dropIfExists('user_medications');
     }
 };

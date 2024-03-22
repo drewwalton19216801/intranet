@@ -3,6 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\User;
+use App\Models\Medication;
+use App\Models\Pharmacy;
+use App\Models\Prescriber;
+use App\Models\Reminder;
+use App\Models\UserMedication;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -105,5 +110,35 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $user->assignRole('admin');
+
+        // Seed the database with a pharmacy
+        $pharmacy = Pharmacy::factory()->create([
+            'name' => 'MedTracker',
+            'address' => '123 Main St',
+            'phone' => '555-555-5555',
+            'city' => 'Anytown',
+            'state' => 'CA',
+        ]);
+
+        $prescriber = Prescriber::factory()->create([
+            'name' => 'John Doe',
+            'address' => '123 Main St',
+            'phone' => '555-555-5555',
+            'city' => 'Anytown',
+            'state' => 'CA',
+        ]);
+
+        // Add some medications to the database
+        Medication::factory()->create([
+            'name' => 'Aspirin',
+            'description' => 'Pain reliever',
+            'dosage' => '500mg',
+            'frequency' => 'daily',
+            'start_date' => now(),
+            'end_date' => now()->addYear(),
+            'prescriber_id' => $prescriber->id,
+            'pharmacy_id' => $pharmacy->id,
+            'user_id' => $user->id,
+        ]);
     }
 }

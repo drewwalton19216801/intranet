@@ -11,14 +11,12 @@ class Reminder extends Model
     use HasFactory, Notifiable;
 
     protected $fillable = [
-        'user_medication_id',
+        'user_id',
+        'medication_id',
         'time'
     ];
 
-    public function userMedication()
-    {
-        return $this->belongsTo(UserMedication::class);
-    }
+
 
     public function notifyUser()
     {

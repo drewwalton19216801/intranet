@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->string('phone');
+            $table->string('city');
+            $table->string('state');
             // Soft delete
             $table->softDeletes();
             $table->timestamps();

@@ -16,28 +16,13 @@ class Medication extends Model
         return $this->belongsTo(Prescriber::class);
     }
 
-    public function userMedications()
+    public function pharmacy()
     {
-        return $this->hasMany(UserMedication::class);
+        return $this->belongsTo(Pharmacy::class);
     }
 
-    public function reminders()
+    public function user()
     {
-        return $this->hasMany(Reminder::class);
-    }
-
-    public function pharmacies()
-    {
-        return $this->belongsToMany(Pharmacy::class, 'user_medications', 'medication_id', 'pharmacy_id');
-    }
-
-    public function users()
-    {
-        return $this->belongsToMany(User::class, 'user_medications', 'medication_id', 'user_id');
-    }
-
-    public function getRouteKeyName()
-    {
-        return 'name';
+        return $this->belongsTo(User::class);
     }
 }

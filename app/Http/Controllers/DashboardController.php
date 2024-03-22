@@ -39,7 +39,11 @@ class DashboardController extends Controller
 
     public function medications()
     {
-        return view('pages.medication.list');
+        // Get the medications for the current user
+        $data = array(
+            'medications' => auth()->user()->medications
+        );
+        return view('pages.medication.list', $data);
     }
 
     public function reminders()
