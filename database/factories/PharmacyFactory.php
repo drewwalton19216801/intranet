@@ -20,6 +20,9 @@ class PharmacyFactory extends Factory
             'name' => fake()->name(),
             'address' => fake()->address(),
             'phone' => fake()->phoneNumber(),
+            'city' => fake()->city(),
+            'state' => fake()->stateAbbr(),
+            'zip' => fake()->postcode(),
         ];
     }
 }

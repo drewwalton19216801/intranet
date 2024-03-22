@@ -140,5 +140,29 @@ class DatabaseSeeder extends Seeder
             'pharmacy_id' => $pharmacy->id,
             'user_id' => $user->id,
         ]);
+
+        Medication::factory()->create([
+            'name' => 'Ibuprofen',
+            'description' => 'Pain reliever',
+            'dosage' => '400mg',
+            'frequency' => 'daily',
+            'start_date' => now(),
+            'end_date' => now()->addYear(),
+            'prescriber_id' => $prescriber->id,
+            'pharmacy_id' => $pharmacy->id,
+            'user_id' => $user->id,
+        ]);
+
+        Medication::factory()->create([
+            'name' => 'Naproxen',
+            'description' => 'Pain reliever',
+            'dosage' => '500mg',
+            'frequency' => 'daily',
+            'start_date' => now(),
+            'end_date' => now()->addYear(),
+            'prescriber_id' => $prescriber->id,
+            'pharmacy_id' => $pharmacy->id,
+            'user_id' => $user->id,
+        ]);
     }
 }

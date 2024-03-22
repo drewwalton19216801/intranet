@@ -9,7 +9,7 @@ class Prescriber extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address', 'phone'];
+    protected $fillable = ['name', 'address', 'phone', 'city', 'state', 'zip'];
 
     public function medications()
     {
