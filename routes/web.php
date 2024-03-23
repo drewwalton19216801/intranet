@@ -5,12 +5,15 @@ use App\Http\Controllers\MedtrackerController;
 use App\Http\Controllers\MedicationsController;
 use App\Http\Controllers\PharmacyController;
 use App\Http\Controllers\PrescriberController;
+use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
 Auth::routes();
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
 
 Route::controller(MedtrackerController::class)->group(function () {
     Route::get('/medtracker', 'index')->name('medtracker.index');
