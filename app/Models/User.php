@@ -66,4 +66,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Medtracker\Prescriber::class);
     }
+
+    public function links()
+    {
+        return $this->hasMany(Medtracker\Link::class);
+    }
 }

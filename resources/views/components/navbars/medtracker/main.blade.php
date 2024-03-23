@@ -20,6 +20,11 @@
                     <a class="nav-link {{ request()->routeIs('medtracker.prescribers.*') ? 'active' : '' }}"
                         href="{{ route('medtracker.prescribers.index') }}">Prescribers</a>
                 </li>
+                <li class="nav-item">
+                    <!-- Link to links list, only active if route is links -->
+                    <a class="nav-link {{ request()->routeIs('medtracker.links.*') ? 'active' : '' }}"
+                        href="{{ route('medtracker.links.index') }}">Links</a>
+                </li>
             </ul>
         </div>
     </div>

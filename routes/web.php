@@ -5,6 +5,7 @@ use App\Http\Controllers\MedtrackerController;
 use App\Http\Controllers\Medtracker\MedicationsController;
 use App\Http\Controllers\Medtracker\PharmacyController;
 use App\Http\Controllers\Medtracker\PrescriberController;
+use App\Http\Controllers\Medtracker\LinkController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Dashboard\ProfileController;
 
@@ -62,3 +63,11 @@ Route::prefix('medtracker/prescribers')->controller(PrescriberController::class)
     Route::get('/{id}/delete', 'destroy')->name('medtracker.prescribers.destroy');
 });
 
+Route::prefix('medtracker/links')->controller(LinkController::class)->group(function () {
+    Route::get('/', 'index')->name('medtracker.links.index');
+    Route::get('/create', 'create')->name('medtracker.links.create');
+    Route::post('/store', 'store')->name('medtracker.links.store');
+    Route::get('/{id}/edit', 'editLink')->name('medtracker.links.edit');
+    Route::post('/{id}/update', 'updateLink')->name('medtracker.links.update');
+    Route::get('/{id}/delete', 'destroy')->name('medtracker.links.destroy');
+});
