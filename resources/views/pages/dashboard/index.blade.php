@@ -16,7 +16,7 @@
                     </p>
                     @role('admin')
                     <p class="card-text">
-                        <strong>IP address:</strong> {{ file_get_contents("https://ipecho.net/plain") }}
+                        <strong>Server IP:</strong> {{ $_SERVER['SERVER_ADDR'] }}
                     </p>
                     @endrole
                 </div>
