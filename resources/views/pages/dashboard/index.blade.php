@@ -17,11 +17,6 @@
                     <p class="card-text">
                         <strong>IP address:</strong> {{ file_get_contents("https://ipecho.net/plain") }}
                     </p>
-                    @if(strpos(PHP_OS, 'WIN') === false)
-                    <p class="card-text">
-                        <strong>Server uptime:</strong> {{ exec('uptime -p') }}
-                    </p>
-                    @endif
                 </div>
             </div>
         </div>
