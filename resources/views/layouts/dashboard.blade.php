@@ -74,17 +74,7 @@
         </nav>
 
         @auth
-            <!-- Secondary navbar -->
-            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
-                <div class="container">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <!-- Link to MedTracker -->
-                            <a class="nav-link" href="{{ route('medtracker.index') }}">MedTracker</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
+            @include('components.navbars.secondary')
         @endauth
 
         <main class="py-4">

@@ -74,8 +74,10 @@
         </nav>
 
         @auth
-            <!-- Secondary navbar -->
-            <nav class="navbar navbar-expand-md navbar-dark bg-primary">
+            @include('components.navbars.secondary')
+
+            <!-- Tertiary navbar -->
+            <nav class="navbar navbar-expand-md navbar-dark bg-secondary">
                 <div class="container">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item">
