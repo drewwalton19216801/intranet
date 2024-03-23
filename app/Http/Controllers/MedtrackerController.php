@@ -25,6 +25,7 @@ class MedtrackerController extends Controller
      */
     public function index()
     {
-        return view('pages.medtracker.index');
+        // Redirect to the medications page
+        return redirect()->route('medtracker.medications.index');
     }
 }

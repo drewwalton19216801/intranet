@@ -35,7 +35,7 @@
 
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <a type="button" href="{{ route('medtracker.pharmacies.index') }}" class="btn btn-secondary">Cancel</a>
                 <button type="submit" class="btn btn-primary">Save pharmacy</button>
             </div>
         </div>
