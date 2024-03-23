@@ -2,7 +2,7 @@
 <div class="col-md-12">
     <h1>Prescriber List</h1>
 
-    <div class="container">
+    <div class="container table-responsive">
         <table class="table table-hover table-striped">
             <thead>
                 <tr>
@@ -24,7 +24,7 @@
     </div>
     <div class="d-flex justify-content-left">
         <!-- New Prescriber Button -->
-        <a class="btn btn-primary" href="{{ route('medtracker.prescribers.create') }}">New Prescriber</a>
+        <a class="btn btn-primary my-2" href="{{ route('medtracker.prescribers.create') }}">New Prescriber</a>
     </div>
 </div>
 

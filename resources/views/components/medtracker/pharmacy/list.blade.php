@@ -2,8 +2,8 @@
 <div class="col-md-12">
     <h1>Pharmacy List</h1>
 
-    <div class="container">
-        <table class="table table-hover table-striped">
+    <div class="container table-responsive">
+        <table class="table table-hover table-stripede">
             <thead>
                 <tr>
                     <th>Name</th>
@@ -22,7 +22,7 @@
             </tbody>
         </table>
     </div>
-    <div class="d-flex justify-content-left">
+    <div class="d-flex justify-content-left my-2">
         <!-- New Pharmacy Button -->
         <a class="btn btn-primary" href="{{ route('medtracker.pharmacies.create') }}">New Pharmacy</a>
     </div>
