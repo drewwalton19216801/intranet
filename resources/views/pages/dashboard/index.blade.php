@@ -14,9 +14,11 @@
                     <p class="card-text">
                         <strong>Server software:</strong> {{ $_SERVER['SERVER_SOFTWARE'] }}
                     </p>
+                    @role('admin')
                     <p class="card-text">
                         <strong>IP address:</strong> {{ file_get_contents("https://ipecho.net/plain") }}
                     </p>
+                    @endrole
                 </div>
             </div>
         </div>
