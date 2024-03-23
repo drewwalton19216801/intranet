@@ -54,16 +54,16 @@ class User extends Authenticatable
      */
     public function medications()
     {
-        return $this->hasMany(Medication::class);
+        return $this->hasMany(Medtracker\Medication::class);
     }
 
     public function pharmacies()
     {
-        return $this->hasMany(Pharmacy::class);
+        return $this->hasMany(Medtracker\Pharmacy::class);
     }
 
     public function prescribers()
     {
-        return $this->hasMany(Prescriber::class);
+        return $this->hasMany(Medtracker\Prescriber::class);
     }
 }

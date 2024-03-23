@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Medtracker;
 
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
-use App\Models\Prescriber;
-use App\Models\Pharmacy;
-use App\Models\Medication;
+use App\Models\Medtracker\Prescriber;
+use App\Models\Medtracker\Pharmacy;
+use App\Models\Medtracker\Medication;
 use App\Models\User;
 
 class PrescriberController extends Controller
