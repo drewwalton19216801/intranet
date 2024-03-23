@@ -21,8 +21,9 @@ Route::prefix('dashboard')->controller(DashboardController::class)->group(functi
 
 Route::prefix('dashboard/profile')->controller(ProfileController::class)->group(function () {
     Route::get('/', 'profile')->name('dashboard.profile');
-    Route::post('/update', 'updateProfile')->name('dashboard.profile.update');
-    Route::post('/change-password', 'changePassword')->name('dashboard.profile.change-password');
+    Route::post('/update', 'update')->name('dashboard.profile.update');
+    Route::post('/change-password', 'storePassword')->name('dashboard.profile.password.store');
+    Route::get('/change-password', 'changePassword')->name('dashboard.profile.password.change');
 });
 
 Route::prefix('medtracker')->controller(MedtrackerController::class)->group(function () {
