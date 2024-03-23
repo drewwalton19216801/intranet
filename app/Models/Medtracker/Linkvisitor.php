@@ -5,11 +5,11 @@ namespace App\Models\Medtracker;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Timedlink extends Model
+class Linkvisitor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['link_id', 'expires_at', 'last_clicked_at', 'clicks'];
+    protected $fillable = ['link_id', 'ip', 'user_agent', 'referer'];
 
     public function link()
     {
