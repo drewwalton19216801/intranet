@@ -26,12 +26,12 @@ class PharmacyController extends Controller
         $data = array(
             'pharmacies' => auth()->user()->pharmacies
         );
-        return view('pages.pharmacy.list', $data);
+        return view('pages.medtracker.pharmacy.list', $data);
     }
 
     public function create()
     {
-        return view('pages.pharmacy.create');
+        return view('pages.medtracker.pharmacy.create');
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class PharmacyController extends Controller
         // Set session message
         $request->session()->flash('status', 'Pharmacy created successfully');
 
-        return redirect('/dashboard/pharmacies');
+        return redirect(route('medtracker.pharmacies.index'));
     }
 
     public function update(Request $request)
@@ -77,7 +77,7 @@ class PharmacyController extends Controller
         // Set session message
         $request->session()->flash('status', 'Pharmacy updated successfully');
 
-        return redirect('/dashboard/pharmacies');
+        return redirect(route('medtracker.pharmacies.index'));
     }
 
     public function destroy(Request $request, $pharmacy_id)
@@ -90,7 +90,7 @@ class PharmacyController extends Controller
         // If there are medications associated with the pharmacy, we cannot delete the pharmacy
         if (count($medications) > 0) {
             $request->session()->flash('error', 'Pharmacy cannot be deleted because there are medications associated with it');
-            return redirect('/dashboard/pharmacies');
+            return redirect(route('medtracker.pharmacies.index'));
         }
 
         // Carry out deletion
@@ -99,6 +99,6 @@ class PharmacyController extends Controller
         // Set session message
         $request->session()->flash('status', 'Pharmacy deleted successfully');
 
-        return redirect('/dashboard/pharmacies');
+        return redirect(route('medtracker.pharmacies.index'));
     }
 }

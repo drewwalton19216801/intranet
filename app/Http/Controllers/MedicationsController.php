@@ -34,20 +34,20 @@ class MedicationsController extends Controller
             'prescribers' => auth()->user()->prescribers,
             'pharmacies' => auth()->user()->pharmacies
         );
-        return view('pages.medication.list', $data);
+        return view('pages.medtracker.medication.list', $data);
     }
 
     public function savePdf()
     {
-        // Get the medications for the current user if they are not expired (e.g. today is not past end_date)
-        $medications = auth()->user()->medications()->whereDate('end_date', '>=', date('Y-m-d'))->get();
+        // Get the medications for the current user
+        $medications = auth()->user()->medications()->get();
 
         $data = array(
             'medications' => $medications,
             'user' => auth()->user(),
             'date' => date('Y-m-d')
         );
-        $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pages.medication.pdf', $data);
+        $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pages.medtracker.medication.pdf', $data);
 
         // Generate a unique filename
         $filename = 'medications-' . auth()->user()->name . '-' . date('Y-m-d') . '_' . time() . '.pdf';
@@ -61,7 +61,7 @@ class MedicationsController extends Controller
             'pharmacies' => auth()->user()->pharmacies,
             'prescribers' => auth()->user()->prescribers
         );
-        return view('pages.medication.create', $data);
+        return view('pages.medtracker.medication.create', $data);
     }
 
     public function store(Request $request)
@@ -92,7 +92,7 @@ class MedicationsController extends Controller
         // Set session status message
         $request->session()->flash('status', 'Medication created successfully');
 
-        return redirect('/dashboard/medications');
+        return redirect(route('medtracker.medications.index'));
     }
 
     public function update(Request $request)
@@ -123,7 +123,7 @@ class MedicationsController extends Controller
         // Set session status message
         $request->session()->flash('status', 'Medication updated successfully');
 
-        return redirect('/dashboard/medications');
+        return redirect(route('medtracker.medications.index'));
     }
 
     public function destroy(Request $request, $medication_id)
@@ -134,6 +134,6 @@ class MedicationsController extends Controller
         // Set session status message
         $request->session()->flash('status', 'Medication deleted successfully');
 
-        return redirect('/dashboard/medications');
+        return redirect(route('medtracker.medications.index'));
     }
 }

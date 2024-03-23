@@ -26,12 +26,12 @@ class PrescriberController extends Controller
         $data = array(
             'prescribers' => auth()->user()->prescribers
         );
-        return view('pages.prescriber.list', $data);
+        return view('pages.medtracker.prescriber.list', $data);
     }
 
     public function create()
     {
-        return view('pages.prescriber.create');
+        return view('pages.medtracker.prescriber.create');
     }
 
     public function store(Request $request)
@@ -49,7 +49,7 @@ class PrescriberController extends Controller
         // Set session message
         $request->session()->flash('status', 'Prescriber created successfully');
 
-        return redirect('/dashboard/prescribers');
+        return redirect(route('medtracker.prescribers.index'));
     }
 
     public function update(Request $request)
@@ -77,7 +77,7 @@ class PrescriberController extends Controller
         // Set session message
         $request->session()->flash('status', 'Prescriber updated successfully');
 
-        return redirect('/dashboard/prescribers');
+        return redirect(route('medtracker.prescribers.index'));
     }
 
     public function destroy(Request $request, $prescriber_id)
@@ -98,6 +98,6 @@ class PrescriberController extends Controller
         // Set session message
         $request->session()->flash('status', 'Prescriber deleted successfully');
 
-        return redirect('/dashboard/prescribers');
+        return redirect(route('medtracker.prescribers.index'));
     }
 }
