@@ -87,10 +87,10 @@ class PrescriberController extends Controller
         // Check if there are any medications associated with the prescriber
         $medications = Medication::where('prescriber_id', $prescriber_id)->get();
 
-        // If there are medications associated with the pharmacy, we cannot delete the pharmacy
+        // If there are medications associated with the prescriber, we cannot delete the prescriber
         if (count($medications) > 0) {
             $request->session()->flash('error', 'Prescriber cannot be deleted because there are medications associated with it');
-            return redirect('/dashboard/prescribers');
+            return redirect(route('medtracker.prescribers.index'));
         }
 
         $prescriber->delete();
