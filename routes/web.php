@@ -2,9 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MedtrackerController;
-use App\Http\Controllers\MedicationsController;
-use App\Http\Controllers\PharmacyController;
-use App\Http\Controllers\PrescriberController;
+use App\Http\Controllers\Medtracker\MedicationsController;
+use App\Http\Controllers\Medtracker\PharmacyController;
+use App\Http\Controllers\Medtracker\PrescriberController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
