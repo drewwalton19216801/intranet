@@ -23,7 +23,7 @@
                 <li class="nav-item">
                     <!-- Link to links list, only active if route is links -->
                     <a class="nav-link {{ request()->routeIs('medtracker.links.*') ? 'active' : '' }}"
-                        href="{{ route('medtracker.links.index') }}">Links</a>
+                        href="{{ route('medtracker.links.index') }}">Share Links</a>
                 </li>
             </ul>
         </div>

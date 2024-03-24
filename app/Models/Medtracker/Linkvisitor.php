@@ -9,7 +9,7 @@ class Linkvisitor extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['link_id', 'ip', 'user_agent', 'referer'];
+    protected $fillable = ['link_id', 'ip', 'user_agent', 'referer', 'visited_at'];
 
     public function link()
     {
