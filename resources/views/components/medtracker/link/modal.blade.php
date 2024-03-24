@@ -12,7 +12,7 @@
                     <input type="hidden" name="link_id" id="link_id" value="{{ $link->id }}">
                     <div class="form-group">
                         <label for="description">Description</label>
-                        <input type="text" class="form-control" id="description" name="description" value="{{ $link->url }}">
+                        <input type="text" class="form-control" id="description" name="description" value="{{ $link->description }}">
                     </div>
                     <div class="form-group">
                         <label for="expires_at">Expiration Date</label>
