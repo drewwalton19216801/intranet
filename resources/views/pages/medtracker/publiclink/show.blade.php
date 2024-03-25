@@ -1,5 +1,5 @@
-@extends('layouts.pdfprint')
+@extends('layouts.publiclink')
 
 @section('content')
-    @include('components.medtracker.medication.pdf')
+    @include('components.medtracker.publiclink.show')
 @endSection
