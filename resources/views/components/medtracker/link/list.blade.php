@@ -56,7 +56,7 @@
 <div class="col-md-12">
     <h1>Link List</h1>
     <div class="container table-responsive">
-        <table class="table table-hover table-striped table-responsive">
+        <table class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th>Slug</th>
