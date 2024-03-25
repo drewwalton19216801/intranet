@@ -1,8 +1,8 @@
 <!-- Medication list -->
 <div class="col-md-12">
     <h1>Medication List</h1>
-    <div class="container">
-        <table class="table table-hover table-striped table-responsive">
+    <div class="container table-responsive">
+        <table class="table table-hover table-striped">
             <thead>
                 <tr>
                     <th>Name</th>
