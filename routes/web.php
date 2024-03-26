@@ -75,4 +75,5 @@ Route::prefix('medtracker/links')->controller(LinkController::class)->group(func
 
 Route::prefix('medtracker/publiclink')->controller(PublicLinkController::class)->group(function () {
     Route::get('/{slug}', 'show')->name('medtracker.publiclink.show');
+    Route::get('/{slug}/download', 'download')->name('medtracker.publiclink.download');
 });

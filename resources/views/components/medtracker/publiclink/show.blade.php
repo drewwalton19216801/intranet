@@ -1,7 +1,9 @@
-<div class="page-content table-responsive">
+<div class="page-content table-responsive container">
     <h2 style="text-align: center">Medication List for {{ $user->name }}</h2>
     <h4 style="text-align: center">Generated on {{ date('m/d/Y') }} at {{ date('g:i A') }}</h4>
-    <p class="text-muted" style="text-align: center">Link expires on {{ $link->expires_at->format('m/d/Y') }}</p>
+    @if($link->expires_at != null)
+        <h5 style="text-align: center">Link expires on {{ $link->expires_at->format('m/d/Y') }}</h5>
+    @endif
 
     <table class="table table-striped" style="width: 100%;">
         <thead>
@@ -20,6 +22,14 @@
             @endforeach
         </tbody>
     </table>
+
+    <!-- If route does not include download, show download button -->
+    @if(!isset($download))
+        <div class="d-flex justify-content-left my-2">
+            <!-- New link Button -->
+            <a class="btn btn-primary" href="{{ route('medtracker.publiclink.download', $link->slug) }}">Save as PDF</a>
+        </div>
+    @endif
 </div>
 
 

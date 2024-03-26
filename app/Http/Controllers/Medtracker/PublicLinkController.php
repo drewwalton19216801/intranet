@@ -7,6 +7,7 @@ use Spatie\Permission\Models\Role;
 use App\Models\Medtracker\Link;
 use App\Models\Medtracker\Linkvisitor;
 use App\Models\User;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class PublicLinkController extends Controller
 {
@@ -48,5 +49,33 @@ class PublicLinkController extends Controller
         );
 
         return view('pages.medtracker.publiclink.show', $data);
+    }
+
+    public function download(Request $request, $slug)
+    {
+        $link = Link::where('slug', $slug)->first();
+
+        if ($link === null) {
+            abort(404);
+        }
+
+        if ($link->isTimedLink($slug) && Link::isExpired($slug)) {
+            return view('pages.medtracker.publiclink.expired');
+        }
+
+        $data = array(
+            'medications' => $link->user->medications()->get(),
+            'user' => $link->user,
+            'date' => date('Y-m-d')
+        );
+
+        $pdf = Pdf::setPaper('letter', 'landscape')->loadView('pages.medtracker.medication.pdf', $data);
+
+        $link->refresh();
+
+        // Generate a unique filename
+        $filename = 'medications-' . $link->user->name . '-' . date('Y-m-d') . '_' . time() . '.pdf';
+
+        return $pdf->download($filename);
     }
 }
