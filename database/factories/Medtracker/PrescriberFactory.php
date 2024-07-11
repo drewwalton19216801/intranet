@@ -1,13 +1,13 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\Medtracker;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Pharmacy>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Prescriber>
  */
-class PharmacyFactory extends Factory
+class PrescriberFactory extends Factory
 {
     /**
      * Define the model's default state.

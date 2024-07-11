@@ -3,11 +3,9 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Medication;
-use App\Models\Pharmacy;
-use App\Models\Prescriber;
-use App\Models\Reminder;
-use App\Models\UserMedication;
+use App\Models\Medtracker\Medication;
+use App\Models\Medtracker\Pharmacy;
+use App\Models\Medtracker\Prescriber;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -104,7 +102,7 @@ class DatabaseSeeder extends Seeder
         // Seed the database with a single user
         $user = User::factory()->create([
             'name' => 'Drew Walton',
-            'email' => 'admin@medtracker',
+            'email' => 'hi@dwalton.info',
             'password' => bcrypt('password'),
             'email_verified_at' => now(),
         ]);
