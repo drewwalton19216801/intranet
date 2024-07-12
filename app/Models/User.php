@@ -71,4 +71,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Medtracker\Link::class);
     }
+
+    public function sleepevents()
+    {
+        return $this->hasMany(Sleeptracker\Event::class);
+    }
 }
